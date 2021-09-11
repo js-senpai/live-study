@@ -151,9 +151,10 @@ document.addEventListener("DOMContentLoaded", function() {
     //Table button
     if($('.service-content table').length>0){
         const currentTr = $('.service-content table:not(.original-table) tr:first-child td:not(:first-child)'),
-              currentPackages = [];
-        currentTr.each(function () {
-            currentPackages.push(`<td><button class="btn  btn-table-popup" data-package="${$(this).text()}">Order</button></td>`);
+              currentPackages = [],
+              budgetTr = $('.service-content table:not(.original-table) tr:nth-child(2) td:not(:first-child)')
+        currentTr.each(function (i) {
+            currentPackages.push(`<td><button class="btn  btn-table-popup" data-price="${$(budgetTr[i]).text().replace(/\D/g,'')}" data-package="${$(this).text()}">Order</button></td>`);
         });
         $('.service-content table:not(.original-table) tbody').append(`
         <tr class="table-buttons">
