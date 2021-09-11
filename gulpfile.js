@@ -12,7 +12,6 @@ const gulp         = require('gulp'),
 	    imagemin = require('gulp-imagemin'),
 		responsive   = require('gulp-responsive'),
 		del          = require('del');
-
 // Local Server
 gulp.task('browser-sync', function() {
 	browserSync({

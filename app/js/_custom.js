@@ -154,7 +154,7 @@ document.addEventListener("DOMContentLoaded", function() {
               currentPackages = [],
               budgetTr = $('.service-content table:not(.original-table) tr:nth-child(2) td:not(:first-child)')
         currentTr.each(function (i) {
-            currentPackages.push(`<td><button class="btn  btn-table-popup" data-price="${$(budgetTr[i]).text().replace(/\D/g,'')}" data-package="${$(this).text()}">Order</button></td>`);
+            currentPackages.push(`<td><button class="btn  btn-table-popup" data-budget="${+$(budgetTr[i]).text().replace(/\D/g,'') || 0}" data-package="${$(this).text()}">Order</button></td>`);
         });
         $('.service-content table:not(.original-table) tbody').append(`
         <tr class="table-buttons">
@@ -232,8 +232,8 @@ document.addEventListener("DOMContentLoaded", function() {
     togglePopup('.btn-table-popup','.popup-order');
     if($('.btn-table-popup').length>0){
         $('.btn-table-popup').click(function () {
-            let currentPackage = $(this).attr('data-package');
-            $('.popup-package').val(currentPackage);
+            $('.popup-package').val($(this).attr('data-package'));
+            $('.popup-budget').val($(this).attr('data-budget'));
         })
     }
     togglePopup('.btn-request','.popup-consult');
